@@ -191,7 +191,9 @@ declare module PlayFabMultiplayerModels {
         | "SouthCentralUs"
         | "SoutheastAsia"
         | "WestEurope"
-        | "WestUs";
+        | "WestUs"
+        | "ChinaEast2"
+        | "ChinaNorth2";
 
     type AzureVmSize = "Standard_D1_v2"
         | "Standard_D2_v2"
@@ -218,6 +220,8 @@ declare module PlayFabMultiplayerModels {
 
     /** https://api.playfab.com/Documentation/Multiplayer/datatype/PlayFab.Multiplayer.Models/PlayFab.Multiplayer.Models.BuildRegion */
     export interface BuildRegion {
+        /** The current multiplayer server stats for the region. */
+        CurrentServerStats?: CurrentServerStats;
         /** The maximum number of multiplayer servers for the region. */
         MaxServers: number;
         /** The build region. */
@@ -442,6 +446,19 @@ declare module PlayFabMultiplayerModels {
         Password?: string;
         /** The username for the remote user that was created. */
         Username?: string;
+
+    }
+
+    /** https://api.playfab.com/Documentation/Multiplayer/datatype/PlayFab.Multiplayer.Models/PlayFab.Multiplayer.Models.CurrentServerStats */
+    export interface CurrentServerStats {
+        /** The number of active multiplayer servers. */
+        Active: number;
+        /** The number of multiplayer servers still downloading game resources (such as assets). */
+        Propping: number;
+        /** The number of standingby multiplayer servers. */
+        StandingBy: number;
+        /** The total number of multiplayer servers. */
+        Total: number;
 
     }
 
